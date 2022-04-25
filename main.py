@@ -16,8 +16,8 @@ import PySimpleGUI as sg
 
 sg.theme("DarkAmber")
 layout= [ sg.TEXT('Autoostas informācijas sistēma')],
-        [sg.text('Sākumpunkts:')sg.inputext()],
-        [sg.Text ('Galapunkts:')sg.InputText()],
+        [sg.Text('Sākumpunkts:'), sg.InputText()],
+        [sg.Text ('Galapunkts:'), sg.InputText()],
         [sg.Button ('Meklēt')],
 
 layout2=[(sg.Text('kks text'))]
