@@ -7,8 +7,9 @@
 #Autoostas_saraksts
 
 class AOSistema():
-  def __init__(self):
-    pass
+  def __init__(self, sakumpunkts, galapunkts):
+    self.sakumpunkts = sakumpunkts
+    self.galapunkts = galapunkts
 
 
 
@@ -33,5 +34,9 @@ tabgrp = [
 ]
 
 window = sg.window('AOSistema', tabgrp)
-while True
+while True:
+  event, values =window.read()
+  if event = 'Meklēt':
+  
+  
 
