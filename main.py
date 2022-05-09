@@ -1,25 +1,25 @@
-#opp
+#OOP
 #class
 #__init__
 #self
 #def - metode
 
-#Autoostas_saraksts
+#Autobusu saraksts
 
 import sqlite3
 
-class Ao():
+class AOsist():
   def __init__(self, sakumpunkts, galapunkts):
     self.sakumpunkts = sakumpunkts
     self.galapunkts = galapunkts
     
   def Marsruti(self):
-    if self.sakumpunkts == "Viļāni" and self.galapunkts == "Rīga":
-      self.cena = 6.5
-      self.ilgums = 3
+    if self.sakumpunkts == "Rīga" and self.galapunkts == "Berlin":
+      self.cena = 56
+      self.ilgums = 23
       
   def Laiks_cela(self):
-    return f"Maršruta {self.sakumpunkts} - {self.galapunkts} ilgums ir {self.ilgums} h, cena - {self.cena} EUR"
+    return f"Maršruta {self.sakums} - {self.galapunkts} ilgums ir {self.ilgums} h, cena - {self.cena} EUR"
 
   def Cena(self):
     return "Šeit būs cena"
@@ -27,8 +27,8 @@ class Ao():
   def Pakalpojuma_info(self):
     return "Šeit būs izvēlētais maršruts, ilgums, sākuma laiks, beigu laiks, cena"
 
-  def Pakalpojuma_info_print(self):
-    db = sqlite3.connect('dati.db')
+  def Pakalpojuma_infoprint(self):
+    db = sqlite3.connect('datti.db')
     db.execute(
   """
   CREATE TABLE IF NOT EXISTS marsruti
@@ -44,7 +44,7 @@ class Ao():
            INSERT INTO marsruti
            (sakumpunkts,galapunkts,cena,laiks)
            VALUES(:sakumpunkts,:galapunkts,:cena,:laiks)
-           """,{'sakumpunkts':self.sakumpunkts,'galapunkts':self.galapunkts,'cena':self.cena,'laiks':self.ilgums})
+           """,{'sakumpunkts':self.sakums,'galapunkts':self.galapunkts,'cena':self.cena,'laiks':self.ilgums})
 
     db.commit()
 
@@ -56,7 +56,7 @@ class Ao():
     
     return f"Vārds: {self.vards}, uzvārds: {self.uzvards}, personas kods: {self.per_kods}, telefona numurs: {self.tel_nr}"
 
-  def Klients_info_print(self):
+  def Klients_infoprint(self):
     db = sqlite3.connect('dati.db')
     db.execute(
   """
@@ -89,20 +89,20 @@ class Ao():
 
 import PySimpleGUI as sg
 
-sg.theme('DarkAmber')   
-layout = [  [sg.Text('Dzelzceļa informācijas sistēma')],
-            [sg.Text('Sākumpunkts:'), sg.InputText()],
+sg.theme('DarkRed')   
+layout = [  [sg.Text('AO informācijas sistēma')],
+            [sg.Text('Sākums:'), sg.InputText()],
             [sg.Text('Galamērķis:'), sg.InputText()],
             [sg.Button('Meklēt')],  #Meklēšana failā
-            [sg.Text('Šeit būs ceļā pavadītais laiks', key='-LAIKS-')]] 
+            [sg.Text('Laiks', key='-LAIKS-')]] 
 
-layout2 = [[sg.Text("Izvēlētais maršruts:", key = '-MARSRUTS-')],
+layout2 = [[sg.Text("Maršruts:", key = '-MARSRUTS-')],
             [sg.Text('Vārds:'), sg.InputText()],
             [sg.Text('Uzvārds:'), sg.InputText()],
-           [sg.Text('Personas kods:'), sg.InputText()],
+           [sg.Text('Personas kds:'), sg.InputText()],
             [sg.Text('Telefona numurs:'), sg.InputText()],
-            [sg.Button('Pirkt')],
-            [sg.Text('Šeit būs personas dati', key='-DATI-')]]
+            [sg.Button('Nopirkt')],
+            [sg.Text('Personas dati', key='-DATI-')]]
 
 layout3 = [[sg.Text("Dati", key = '-DATUB-')]]
 
@@ -117,7 +117,7 @@ tabgrp = [
   ]
 ]
  
-window = sg.Window('InfSistēma', tabgrp)
+window = sg.Window('InfoSistēma', tabgrp)
 while True:             
   event, values = window.read()
   if event == "Meklēt":
